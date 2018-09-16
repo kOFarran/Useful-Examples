@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    var tableApp = angular.module('tableApp', []);
+    tableApp.controller('tableController', function($scope){
+      //info array containing table data
+      $scope.info = [{
+        "ID":"1",
+        "fname":"John",
+        "lname":"Doe",
+        "age":"31"
+      },
+      {
+        "ID":"2",
+        "fname":"Jane",
+        "lname":"Doe",
+        "age":"32"
+      },
+      {
+        "ID":"3",
+        "fname":"Sean",
+        "lname":"White",
+        "age":"19"
+      },
+      {
+        "ID":"4",
+        "fname":"Dean",
+        "lname":"Sean",
+        "age":"21"
+      },
+      {
+        "ID":"5",
+        "fname":"Dan",
+        "lname":"Murphy",
+        "age":"22"
+      },
+      {
+        "ID":"6",
+        "fname":"Con",
+        "lname":"Murray",
+        "age":"33"
+      },
+      {
+        "ID":"7",
+        "fname":"Jack",
+        "lname":"Dawe",
+        "age":"43"
+      },
+      {
+        "ID":"8",
+        "fname":"Mike",
+        "lname":"Donnaivan",
+        "age":"26"
+      },
+      {
+        "ID":"9",
+        "fname":"Alex",
+        "lname":"Philbin",
+        "age":"21"
+      },
+      {
+        "ID":"10",
+        "fname":"Chloe",
+        "lname":"Lenihan",
+        "age":"24"
+      },
+      {
+        "ID":"11",
+        "fname":"Jack",
+        "lname":"Multractor",
+        "age":"21"
+      },
+      {
+        "ID":"12",
+        "fname":"Conor",
+        "lname":"Kelly",
+        "age":"29"
+      }]
+    });
+
+    /*
+    * function to filter the number of row displayed on the table
+    */
+      function filterRows(object){
+        var rowNumber = object.value;
+        if (rowNumber == "5"){
+          $("#example_table tr:lt(6)").css("display", "");
+          $("#example_table tr:gt(6)").css("display", "none");
+        }else if (rowNumber == "10"){
+          $("#example_table tr:lt(11)").css("display", "");
+          $("#example_table tr:gt(11)").css("display", "none");
+        }else if (rowNumber == "15"){
+          $("#example_table tr:lt(16)").css("display", "");
+          $("#example_table tr:gt(16)").css("display", "none");
+        }else if (rowNumber == "20"){
+          $("#example_table tr:lt(21)").css("display", "");
+          $("#example_table tr:gt(21)").css("display", "none");
+        }else if (rowNumber == "-1"){
+          $("#example_table tr:gt(0)").css("display", "");
+
+        }
+
+      }
+    </script>
+  <head>
+<body>
+<div id="example_table_length">
+  <!-- Table row filter -->
+<label>Show<select aria-controls="example_table"onChange="filterRows(this);">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+    <option value="-1" selected>All</option>
+  </select>Rows</label>
+</div>
+    <div class="row" ng-app="tableApp">
+        <div class="col-md-12">
+          <div class="table-responsive">
+          <table id="example_table" ng-controller="tableController" class="table table-striped table-hover" name="lighting-table">
+            <thead>
+            <tr>
+              <th style="width: 25%;">ID</th>
+              <th style="width: 25%;">First Name</th>
+              <th style="width: 25%;">Surname</th>
+              <th style="width: 25%;">Age</th>
+            <tr>
+            </thead>
+            <!-- looping through the 'info' array for each table row -->
+            <tbody ng-repeat="info in info">
+              <tr>
+                <td align="center">{{info.ID}}</td>
+                <td align="center">{{info.fname}}</td>
+                <td align="center">{{info.lname}}</td>
+                <td align="center">{{info.age}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+    </div>
+</body>
+<html>
